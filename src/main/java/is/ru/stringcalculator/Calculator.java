@@ -11,6 +11,7 @@ public class Calculator {
 		}
 		if(text.contains("//")) {
 			text = text.replace("text.substring(2, 3)",",");
+			text = text.substring(3);
 		}
 		if(text.contains(",")){
 			return sum(splitNumbers(text));
