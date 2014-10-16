@@ -7,8 +7,10 @@ public class Calculator {
 			return 0;
 		}
 		if(text.contains("\n")) {
-			//text = replaceNewline(text);
-			text = text.replace("\n",",");
+			text = replaceNewline(text);
+		}
+		if(text.contains("//")) {
+			text = text.replace("text.substring(2, 3)",",");
 		}
 		if(text.contains(",")){
 			return sum(splitNumbers(text));
@@ -33,8 +35,8 @@ public class Calculator {
 		return total;
 	}
 	
-	/*private static String replaceNewline(String text){
+	private static String replaceNewline(String text){
 		return text.replace("\n",",");
-	}*/
+	}
 
 }
