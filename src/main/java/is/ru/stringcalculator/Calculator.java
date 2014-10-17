@@ -33,6 +33,7 @@ public class Calculator {
 		boolean containsNegative = false;
         	for(String number : numbers){
 			if(toInt(number) < 0) containsNegative = true;
+			if(toInt(number) > 1000) continue;
 			total += toInt(number);
 		}
 		if(containsNegative == true) throw new RuntimeException("Negatives not allowed: " + negativeNumbers(numbers));

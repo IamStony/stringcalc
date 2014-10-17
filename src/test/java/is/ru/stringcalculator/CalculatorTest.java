@@ -63,7 +63,7 @@ public class CalculatorTest {
 	}
 	@Test
 	public void testOver9000() {
-		asserEquals(2, Calculator.add("1001,2"));
+		assertEquals(2, Calculator.add("1001,2"));
 	}        
 
 }
