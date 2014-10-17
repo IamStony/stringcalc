@@ -40,4 +40,8 @@ public class CalculatorTest {
 	public void testDelimeter() {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+	@Test
+	public void testNegative() {
+		assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+	}
 }
