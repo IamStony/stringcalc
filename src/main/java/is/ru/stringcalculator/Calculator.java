@@ -56,13 +56,18 @@ public class Calculator {
 	}
 	
 	private static String delimCheck(String text) {
-		String delim = text.substring(2, 3);
-		text = text.replace(delim,",");
-		String newLine = text.substring(3, 4);
-                if(newLine.equals("\n")) { //Ef það er newline milli delim og talnanna fjarlægja bara hann
-                	text = text.substring(0, 3) + text.substring(4);
-                }
-		return text = text.substring(3); //Eyðir delim úr strengnum
+		if(!(text.contains("[") && text.contains("]"))) return singleDelim(text);
+		else return "";
 	}
+	
+	private static String singleDelim(String text) {
+    		String delim = text.substring(2, 3);
+    		text = text.replace(delim,",");
+    		String newLine = text.substring(3, 4);
+    		if(newLine.equals("\n")) { //Ef það er newline milli delim og talnanna fjarlægja bara hann
+    				text = text.substring(0, 3) + text.substring(4);
+    		}
+    		return text = text.substring(3); //Eyðir delim úr strengnum
+    	}
 
 }
