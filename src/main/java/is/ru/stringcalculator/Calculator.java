@@ -6,13 +6,15 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		if(text.contains("\n")) {
-			text = replaceNewline(text);
-		}
 		if(text.contains("//")) {
-			text = text.replace(text.substring(2, 3),",");
-			text = text.substring(3);
+			String delim = text.substring(2, 3);
+			text = text.replace(delim,",");
+			text = text.substring(5); //Sleppir fyrstu 5 stöfunum, t.d. "//;\n...."
 		}
+		if(text.contains("\n")) {
+                        text = replaceNewline(text);
+                }
+
 		if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
