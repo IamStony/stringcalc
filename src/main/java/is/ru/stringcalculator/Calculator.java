@@ -9,7 +9,7 @@ public class Calculator {
 		if(text.contains("//")) {
 			String delim = text.substring(2, 3);
 			text = text.replace(delim,",");
-			text = text.substring(5); //Sleppir fyrstu 5 stöfunum, t.d. "//;\n...."
+			text = text.substring(4); //Sleppir fyrstu 5 stöfunum, t.d. "//;\n...."
 		}
 		if(text.contains("\n")) {
                         text = replaceNewline(text);
