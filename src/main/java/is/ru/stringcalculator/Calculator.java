@@ -59,9 +59,10 @@ public class Calculator {
 		if(!(text.contains("[") && text.contains("]"))) return singleDelim(text);
 		else {
 			int beginIndex = 3; //Beint fyrir aftan '//['
-			int endIndex = beginIndex + 1; //Notað með beginIndex í substring til að skoða eitt stak í einu
+			int endIndex = 4; //Notað með beginIndex í substring til að skoða eitt stak í einu
 			while(!text.substring(beginIndex, endIndex).equals("]")) {
 				beginIndex++;
+				endIndex++;
 			}
 			String delim = text.substring(3, endIndex-1); //Byrjar beint fyrir aftan '//[' og endar fyrir framan ']'
 			text = text.replace(delim, ",");
