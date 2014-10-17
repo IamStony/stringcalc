@@ -60,13 +60,17 @@ public class Calculator {
 		else if(!text.contains("][")) return anyLengthSingleDelim(text);
                 else {
 			while(text.contains("][")) {
-                		String delim = text.substring(3, 4);
+                		int beginIndex = 3; //Beint fyrir aftan '//['
+                        	int endIndex = 4; //Notað með beginIndex í substring til að skoða eitt stak í einu
+                        	while(!text.substring(beginIndex, endIndex).equals("]")) {
+                                	beginIndex++;
+                                	endIndex++;
+                        	}
+                        	String delim = text.substring(3, endIndex-1); //Byrjar beint fyrir aftan '//[' og endar fyrir framan ']'
                 		text = text.replace(delim,",");
                 		text = text.substring(0, 2) + text.substring(5);
                 	}
-                	text = text.replace("[", "");
-                	text = text.replace("]", "");
-                	return singleDelim(text);
+                	return anyLengthSingleDelim(text);
                 }
 	}	
 	private static String singleDelim(String text) {
