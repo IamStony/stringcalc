@@ -55,9 +55,19 @@ public class Calculator {
 		return text.replace("\n",",");
 	}
 	
-	private static String delimCheck(String text) {
+	public static String delimCheck(String text) {
 		if(!(text.contains("[") && text.contains("]"))) return singleDelim(text);
-		else return "";
+		else {
+			int beginIndex = 3; //Beint fyrir aftan '//['
+			int endIndex = beginIndex + 1; //Notað með beginIndex í substring til að skoða eitt stak í einu
+			while(!text.substring(beginIndex, endIndex).equals("]")) {
+				beginIndex++;
+			}
+			String delim = text.substring(3, endIndex-1); //Byrjar beint fyrir aftan '//[' og endar fyrir framan ']'
+			text = text.replace(delim, ",");
+			text = text.substring(6);
+    			return text;
+		}
 	}
 	
 	private static String singleDelim(String text) {
