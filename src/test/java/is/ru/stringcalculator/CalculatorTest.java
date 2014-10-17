@@ -52,4 +52,16 @@ public class CalculatorTest {
 		assertEquals("Negatives not allowed: -1", exception.getMessage());
 		
 	}
+        @Test
+        public void testNegative() {
+                RuntimeException exception = null;
+                try{
+                        Calculator.add("2,-4,3,-5");
+                }
+                catch(RuntimeException e) {
+                        exception = e;
+                }
+                assertEquals("Negatives not allowed: -4,-5", exception.getMessage());
+        }
+
 }
