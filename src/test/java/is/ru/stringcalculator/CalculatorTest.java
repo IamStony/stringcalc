@@ -41,6 +41,10 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 	@Test
+	public void testAnyLengthDelimeter() {
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
+	@Test
 	public void testNegative() {
 		RuntimeException exception = null;
 		try{
