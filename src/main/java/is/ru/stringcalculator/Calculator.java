@@ -30,10 +30,23 @@ public class Calculator {
       
 	private static int sum(String[] numbers){
  		int total = 0;
+		boolean containsNegative = false;
         	for(String number : numbers){
+			if(toInt(Number) < 0) containsNegative = true;
 			total += toInt(number);
 		}
-		return total;
+		if(containsNegative == true) throw new RuntimeException("Negatives not allowed: " + negativeNumbers(numbers));
+		else return total;
+	}
+	
+	private static String negativeNumbers(String[] numbers) {
+		String neg = "";
+		for(String number : numbers){
+			if(toInt(number) < 0) {
+				if(neg.equals("")) neg += number;
+				else neg += "," + number;
+			}
+		}
 	}
 	
 	private static String replaceNewline(String text){
