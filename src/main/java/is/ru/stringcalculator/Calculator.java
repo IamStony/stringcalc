@@ -32,7 +32,7 @@ public class Calculator {
  		int total = 0;
 		boolean containsNegative = false;
         	for(String number : numbers){
-			if(toInt(Number) < 0) containsNegative = true;
+			if(toInt(number) < 0) containsNegative = true;
 			total += toInt(number);
 		}
 		if(containsNegative == true) throw new RuntimeException("Negatives not allowed: " + negativeNumbers(numbers));
@@ -47,6 +47,7 @@ public class Calculator {
 				else neg += "," + number;
 			}
 		}
+		return neg;
 	}
 	
 	private static String replaceNewline(String text){
