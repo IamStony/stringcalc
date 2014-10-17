@@ -61,6 +61,9 @@ public class CalculatorTest {
                 assertEquals("Negatives not allowed: -4,-5", exception.getMessage());
 
 	}
-        
+	@Test
+	public void testOver9000() {
+		asserEquals(2, Calculator.add("1001,2"));
+	}        
 
 }
