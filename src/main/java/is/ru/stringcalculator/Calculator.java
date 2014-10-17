@@ -57,20 +57,18 @@ public class Calculator {
 	
 	public static String delimCheck(String text) {
 		if(!(text.contains("[") && text.contains("]"))) return singleDelim(text);
-		else {
-			int beginIndex = 3; //Beint fyrir aftan '//['
-			int endIndex = 4; //Notað með beginIndex í substring til að skoða eitt stak í einu
-			while(!text.substring(beginIndex, endIndex).equals("]")) {
-				beginIndex++;
-				endIndex++;
-			}
-			String delim = text.substring(3, endIndex-1); //Byrjar beint fyrir aftan '//[' og endar fyrir framan ']'
-			text = text.replace(delim, ",");
-			text = text.substring(6);
-    			return text;
-		}
-	}
-	
+		else if(!text.contains("][")) return anyLengthSingleDelim(text);
+                else {
+			while(text.contains("][")) {
+                		String delim = text.substring(3, 4);
+                		text = text.replace(delim,",");
+                		text = text.substring(0, 2) + text.substring(5);
+                	}
+                	text = text.replace("[", "");
+                	text = text.replace("]", "");
+                	return singleDelim(text);
+                }
+	}	
 	private static String singleDelim(String text) {
     		String delim = text.substring(2, 3);
     		text = text.replace(delim,",");
@@ -80,5 +78,18 @@ public class Calculator {
     		}
     		return text = text.substring(3); //Eyðir delim úr strengnum
     	}
+	private static String anyLengthSingleDelim(String text) {
+		int beginIndex = 3; //Beint fyrir aftan '//['
+                int endIndex = 4; //Notað með beginIndex í substring til að skoða eitt stak í einu
+                while(!text.substring(beginIndex, endIndex).equals("]")) {
+                	beginIndex++;
+                      	endIndex++;
+                }
+               	String delim = text.substring(3, endIndex-1); //Byrjar beint fyrir aftan '//[' og endar fyrir framan ']'
+               	text = text.replace(delim, ",");
+               	text = text.substring(6);
+                return text;
+
+	}
 
 }
